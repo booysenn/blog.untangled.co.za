@@ -1,4 +1,4 @@
-baseURL = 'https://blog.untangled.co.za'
+baseURL = 'https://blog.untangled.co.za/public'
 title = 'Untangled Blog'
 
 # This is what goes in <html lang="">

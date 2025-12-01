@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: "Home Automation - Getting Started"
 date: 2025-11-29
 description: "Getting started with home automation"
 author: "Nymus"

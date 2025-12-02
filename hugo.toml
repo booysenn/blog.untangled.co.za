@@ -65,9 +65,9 @@ ignoreErrors = ["additional-script-loading-error"] # ignore error of loading add
     url = '/general/'
     weight = 20
   [[Languages.en-gb.menu.main]]
-    pageRef="homeauto"
+    pageRef="homeautomation"
     name = 'Home Automation'
-    url = '/homeauto/'
+    url = '/homeautomation/'
     weight = 30
   [[Languages.en-gb.menu.main]]
     pageRef="about"

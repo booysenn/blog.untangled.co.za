@@ -3,7 +3,7 @@ title: "Home Automation - Philosophy"
 date: 2025-11-29
 description: "My home automation philosophy that guides my planning and purchases"
 author: "Nymus"
-weight: 33
+weight: 32
 tags:
   - home_automation
   - home_assistant
@@ -23,3 +23,5 @@ I have a few core prinicples for home automation.
  * Automation should augment and not replace
  * Tech should be invisible
  * This list will change
+
+ Next: [What To Know]( {{< relref "homeauto/what_to_know" >}})

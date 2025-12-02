@@ -1,9 +1,9 @@
 ---
-title: "Home Automation - Getting Started"
+title: "Home Automation - What To Know"
 date: 2025-11-29
-description: "Getting started with home automation"
+description: "What to know when getting started with home automation"
 author: "Nymus"
-weight: 32
+weight: 33
 tags:
   - home_automation
   - home_assistant
@@ -81,3 +81,5 @@ ESP Home is an open source project that allows you to easily create customer dev
 
 ## Wireguard
 Wireguard is a VPN implementation that is built into the Linux kernel. This leads to it beign widely supported by consumer device built on the Linux kernel as well as Android, IOS, Windows and MacOS. To connect remotely to your smarthome, Wireguard is my preferred VPN connection. It allows me to reach all my self hosted service like Home Assitant from anywhere in the world without exposing anything to the Internet. Alternatives to using Wireguard may be commercial VPNs like Surfshark or a NabuCasa subscription that allows you to reach Home Assistant through their servers. This is a good option if you are unsure of getting a VPN configured.
+
+Previous: [Philosophy]( {{< relref "homeauto/philosophy" >}}) Next: [Layout]( {{< relref "homeauto/layout" >}})

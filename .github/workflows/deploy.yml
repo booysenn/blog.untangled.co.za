@@ -8,8 +8,21 @@ on:
   repository_dispatch:
     types: [publish-event]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
-  build_and_deploy_hugo_site:
+  build:
     runs-on: ubuntu-latest
     name: Build and deploy Hugo site
 
@@ -21,27 +34,26 @@ jobs:
         extended: true
     
     - name: Checkout repo on source_branch
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: 'recursive'
-        # <<recommended if project uses git submodules for any purpose>>
-        # <<required if deploying to git submodule directory>>
-        token: ${{ secrets.ACCESS_TOKEN }}   # <<if needed for private repos>>
         fetch-depth: '0'
-        # <<fetch-depth: '0' currently required until shallow clone problems are solved>>
-        
-    - name: Build site and push to release branch
-      uses: aormsby/hugo-deploy-to-pages@v2.1
-      id: build_step  # <<for outputs>>
-      with:
-        source_branch: 'main'
-        release_branch: 'gh-pages'
-        hugo_publish_directory: 'public'
-        # submodule_release_branch: 'subbed' <<only provide if you are publishing to directory with git submodule>>
-        # full_rebuild: true
-        # hugo_publish_directory: 'documents'   <<publish to another directory if needed>>
-        # hugo_build_options: '-D --minify --ignoreCache' <<hugo build cis customizable>>
-        # commit_message: "I love this action."
-        # test_mode: true <<enable to run a few verification tests before your first live run>>
 
-        # <<lots of other options!>>
+    - name: Build with Hugo
+      run: hugo --minify
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./public        
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
